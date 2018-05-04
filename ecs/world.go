@@ -60,5 +60,6 @@ func (w *World) DeleteEntity(entity Entity) error {
 		return fmt.Errorf("No entity with ID %d exists", entity)
 	}
 	delete(w.entities, entity)
+	// TODO implement cleanup of components
 	return nil
 }
