@@ -5,6 +5,7 @@ import (
 	"reflect"
 )
 
+// Attribute describes one typed attribute of a component
 type Attribute struct {
 	name  string
 	ttype reflect.Type
@@ -36,29 +37,34 @@ func (a *Attribute) typeCheck(value interface{}) (interface{}, error) {
 	return castValue, nil
 }
 
+// Set the value of this attribute, with run-time type checking
 func (a *Attribute) Set(value interface{}) error {
-	if castValue, err := a.typeCheck(value); err != nil {
+	castValue, err := a.typeCheck(value)
+	if err != nil {
 		return fmt.Errorf("Cannot assign value %#v to attribute %s: %s",
 			value, a.name, err,
 		)
-	} else {
-		a.value = castValue
-		return nil
 	}
+	a.value = castValue
+	return nil
 }
 
+// Name returns the name of this attribute
 func (a *Attribute) Name() string {
 	return a.name
 }
 
+// Type returns the type of this attribute
 func (a *Attribute) Type() reflect.Type {
 	return a.ttype
 }
 
+// Value returns the current value of this attribute
 func (a *Attribute) Value() interface{} {
 	return a.value
 }
 
+// MkAttribute creates a new Attribute with a given name and run-time type
 func MkAttribute(name string, typeName string) (*Attribute, error) {
 	var value interface{}
 	var t reflect.Type
