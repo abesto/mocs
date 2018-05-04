@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/bwmarrin/snowflake"
+  packages = ["."]
+  revision = "68117e6bbede4dd72d70c7a58d73348ead068509"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -15,16 +21,13 @@
 
 [[projects]]
   name = "github.com/stretchr/testify"
-  packages = [
-    "assert",
-    "require"
-  ]
+  packages = ["assert"]
   revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
   version = "v1.2.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f2079202b6cb62a08d79607c78d36fb20719cfc1e2b0db67bc4c63bc8e8ac4d2"
+  inputs-digest = "f53718bfa0d0ec4e9afcfdadc7bd06921f4aed2a88b16d2264d077ac93742014"
   solver-name = "gps-cdcl"
   solver-version = 1
